@@ -1,5 +1,0 @@
-what I should do now!
-1. leetcode easy part and medium part
-2. CC 180
-3. learn git
-4. learn C++
