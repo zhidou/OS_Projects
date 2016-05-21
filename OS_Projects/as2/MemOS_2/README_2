@@ -1,0 +1,13 @@
+1. we create a MemOS, which I put it in the boot menu list and then
+	the grub could recognize it and boot it.
+2. This MemOS is created by boot.s and init.c
+3. In boot.s we set the multiboot flag and set a stack and all the related things
+4. Then actually we print words on the screen by call init.c
+5. In init.c actually what I should do is to fill the VGA buffer with the 
+	things I want to show
+6. Finally, we get back to boot.s
+7. The linker file is use to link the file and I set the base space 
+	is 0x100000, which just from 1M. Because below 1M there some
+	unusable memory, but above from 0x00100000 - 0x00F00000 is free to use
+8. after linked, we get MemOS, and put it in the boot file of virtual
+	disk and add it in the list

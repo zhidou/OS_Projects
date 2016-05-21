@@ -1,0 +1,49 @@
+My steps to create the virtual disk:
+Actually I follow the guideline HOWTO to create the virtual disk
+
+$dd if=/dev/zero of=disk.img bs=1k count=32760
+$ fdisk c.img
+Command (m for help): x
+Expert command (m for help): h
+Number of heads (1-256, default 255): 16
+Expert command (m for help): s
+Number of sectors (1-63, default 63): 63
+Expert command (m for help): c
+Number of cylinders (1-1048576): 60
+Expert command (m for help): r
+Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-60, default 1): 
+Using default value 1
+Last cylinder or +size or +sizeM or +sizeK (1-60, default 60): 
+Using default value 60
+
+Command (m for help): t
+Selected partition 1
+Hex code (type L to list codes): 83
+
+Command (m for help): a
+Partition number (1-4): 1
+
+Command (m for help): w
+$ losetup -o 32256 /dev/loop0 /path/to/c.img
+$ mke2fs /dev/loop0
+$ losetup -d /dev/loop0
+$ mkdir /mnt/C
+$ mount /path/to/c.img /mnt/C -text2 -o loop,offset=32256
+$ mkdir /mnt/C/boot
+$ mkdir /mnt/C/boot/grub
+$ cp /usr/lib/grub/i386-pc/{stage1,e2fs_stage1_5,stage2}
+/mnt/C/boot/grub 
+$ grub
+grub> device (hd0) /path/to/c.img
+grub> geometry (hd0) 60 16 63
+grub> root (hd0,0)
+grub> setup (hd0)
+grub> quit
+cd /mnt/C/boot/grub/
+vi menu.lst

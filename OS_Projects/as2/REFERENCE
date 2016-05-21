@@ -1,0 +1,13 @@
+1. MemOS_1 reference from vga16
+2. reference for MemOS_2
+	E820:
+	http://wiki.osdev.org/Detecting_Memory_%28x86%29#Getting_an_E820_Memory_Map
+	http://www.uruk.org/orig-grub/mem64mb.html
+	http://www.delorie.com/djgpp/doc/rbinter/id/50/17.html
+	multiboot.h:
+	http://www.gnu.org/software/grub/manual/multiboot/html_node/multiboot.h.html
+	https://www.gnu.org/software/grub/manual/multiboot/multiboot.html
+	VGA print:
+	http://www.osdever.net/bkerndev/Docs/printing.htm
+	http://wiki.osdev.org/Text_UI
+	http://wiki.osdev.org/Printing_to_Screen
