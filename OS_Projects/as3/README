@@ -1,0 +1,27 @@
+Zhi Dou:
+Contribution: FIFO with stack and FIFO with interrupt
+
+1.	FIFO-1 is FIFO system with stack but without using interrupt
+	FIFO-2 is the system enable interrupt
+
+2.	Run this code through qemu
+	qemu-system-i386 -kernel FIFO-x (x could be 1, 2)
+	check the result
+	qemu-vncviewer 127.0.0.1:5900
+	
+3.	The default schedule method is FIFO, and we set another schedule method
+	in our code, shortest remaining time first. If you want to change to this
+	method, change the define value of FIFO to 0, SRT to 1 in init.c for FIFO-1
+	and in type.h for FIFO-2.
+
+4.	For good effect in demo, we add disable interrupt and enable interrupt at the
+	beginning and ending place of thread function code, to guarantee it could print
+	one by one, instead of just showing the final result instantaneously. But we know
+	in real life we do not have to do that.
+
+Reference:
+1.	64-ia-32-architectures-software-developer-manual-325462
+2.	Memos-2
+3.	http://www.jamesmolloy.co.uk/tutorial_html/
+4.	http://wiki.osdev.org/PIT
+5.	http://wiki.osdev.org/PIC	
