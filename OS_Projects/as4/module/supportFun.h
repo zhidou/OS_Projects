@@ -4,7 +4,7 @@
 
 # ifndef _supportFun_
 # define _supportFun_
-# include "init_module.h"
+# include "ramdisk_module.h"
 
 typedef struct file_object_T
 {

@@ -1,0 +1,30 @@
+1.	run Ramdisk by typing ./run.sh
+2.	Operations in Ramdisk:
+	(1)	creat pathname (e.g. creat haha)
+		create a regular file under spefied path (e.g. create haha.txt under root)
+	(2) mkdir pathname (e.g. mkdir xixi)
+		create a directory file under spefied path (e.g. create xixi under root)
+	(3)	ls
+		show all the file under current directory
+	(4)	pwd
+		show current directory
+	(5)	cd pathname (e.g. cd xixi)
+		go into specifed directory file (e.g. go into xixi)
+	(6) cd ../pathname
+		go back parent directory and then go into a new directroy
+	(7) rm pathname
+		remove a file(regurlar/directory)
+	// these are sefl-explanatory
+	(8)	close pathname
+	(9) open pathname
+
+	// write and read from the file write/read position(default from beginning) 
+	(10) write 
+	(11) read
+	(12) readdir 
+		read the content of a directory file
+	(13) lseek 
+		change write/read positon of a file opened by a process
+	(14) test
+		test bigfile (which we failed before)
+

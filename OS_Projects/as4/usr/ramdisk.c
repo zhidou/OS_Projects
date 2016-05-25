@@ -1,11 +1,12 @@
-# include "filesys.h"
+# include "ramdisk.h"
 
 int main(void)
 {
-    char cmd[15] = "test";
+    char cmd[20] = "test";
     char input[100];
     char output[100];
-
+    system("./clean.sh");
+    
     /* for test use */
     char data1[DIRECT*BLK_SZ]; /* Largest data directly accessible */
     char data2[PTRS_PB*BLK_SZ];     /* Single indirect data size */
@@ -31,7 +32,7 @@ int main(void)
     while (strcmp(cmd, "exit"))
     {
         printf("Ramdisk # ");
-        fgets(cmd, 15, stdin);
+        fgets(cmd, 20, stdin);
         cmd[strlen(cmd) - 1] = '\0';
         if (!strcmp(cmd, "exit"));
         else if (!strcmp(cmd, "pwd"))
@@ -91,13 +92,16 @@ int main(void)
         {
 
             int i = 2;
+            int ret;
             while (cmd[i] == ' ' && cmd[i] != '\0')
                 i++;
             if (cmd[i] == '\0')
                 continue;
             char pathname[100];
             strcpy(pathname, cmd + i);
-            rd_unlink(pathname);
+            ret = rd_unlink(pathname);
+            if (ret == -1)
+                printf("You cannot remove this file, for this file is open of not exist\n");
         }
         else if (!strcmp(cmd, "close"))
         {
@@ -105,7 +109,6 @@ int main(void)
             printf("fd_ID: ");
             scanf("%d",&fd);
             getchar();
-            
             rd_close(fd);
         }
         else if (!strncasecmp(cmd, "write", 5))
@@ -199,13 +202,16 @@ int main(void)
                 exit(EXIT_FAILURE);
             }
             /* Should be all 2s here... */
-            printf("%d\n", strlen(testdata));
-            printf("%d\n", strlen(addr));
-            return 0;
+            printf("It should be %d letters\n", strlen(testdata));
+            printf("Actually read %d letters\n", strlen(addr));
         }
+        else if (!strcmp(cmd, ""))
+            continue;
         else
             printf("%s: command not found\n", cmd);
     }
+
+    system("./unload.sh");
 
     return 0;
 

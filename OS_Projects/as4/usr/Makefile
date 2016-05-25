@@ -1,4 +1,4 @@
 all:
-	gcc -Wall fun_ioctl.c filesys.c -o ramdisk
+	gcc -Wall fun_ioctl.c ramdisk.c -o ramdisk
 clean:
 	rm ramdisk

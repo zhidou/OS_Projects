@@ -3,6 +3,7 @@
 //
 
 # include "supportFun.h"
+#include "ramdisk_module.h"
 
 FDT_t *FDT_h = NULL;
 extern inode_t *inode;

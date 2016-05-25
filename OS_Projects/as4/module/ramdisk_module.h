@@ -19,7 +19,7 @@
 #include <asm/uaccess.h>
 #include <asm/string.h>
 #include <asm/unistd.h>
-#include "../usr/filesys_ioctl.h"
+#include "../usr/ramdisk_ioctl.h"
 
 # define FINE 0
 # define ERROR -1
